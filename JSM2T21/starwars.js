@@ -1,11 +1,11 @@
 const fs = require('fs')
-const wstream = fs.createWriteStream('STAR_WARS.txt')
+const wstream = fs.createWriteStream('STAR_WARS.json')
 const request = require('request-promise')
 const yargs = require('yargs')
 
 // eslint-disable-next-line no-unused-expressions
 yargs.command(
-  'find',
+  'find [type] [name]',
   'Input type and name to find info about Star Wars universe.',
   {},
   (argv) => {
