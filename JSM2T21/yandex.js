@@ -6,22 +6,16 @@ const wstream = fs.createWriteStream('TranslatedText.txt')
 
 // eslint-disable-next-line no-unused-expressions
 yargs.command(
-  'translate [text] [lang]',
+  'translate <text> <lang>',
   '[lang] - language in which you want to translate. [text] - translated text',
   {},
   (argv) => {
-    if (!argv.lang || !argv.text) {
-      throw new Error("Parametres can't be empty")
-    }
     translate(argv.text, argv.lang)
   })
-  .command('read [file] [lang]',
+  .command('read <file> <lang>',
     '[file] - file with translated text.[lang] - language in which you want to translate',
     {},
     (argv) => {
-      if (!argv.file || !argv.lang) {
-        throw new Error("Parametres can't be empty")
-      }
       if (fs.existsSync(argv.file)) {
         const text = fs.readFileSync(argv.file, 'utf8')
         translate(text, argv.lang)
